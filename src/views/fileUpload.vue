@@ -1,10 +1,10 @@
-<script>
+<script xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
 export default {
   name: "fileUpload",
   data: () => ({
     display: {
       xs: 1,
-      sm: 1,
+      sm: 2,
       md: 2,
       lg: 3,
       xl: 4
@@ -17,7 +17,7 @@ export default {
         display: "grid",
         gridTemplateColumns: `repeat(${
           this.display[this.$vuetify.breakpoint.name]
-        }, 2fr)`
+        }, 1fr)`
       };
     }
   }
@@ -44,22 +44,38 @@ export default {
       </v-toolbar>
 
       <!--                Next path is card for > xs-->
-      <v-container xs6 sm6 md6 lg6 xl6 fluid grid-list grey lighten-4>
+      <v-container fluid grid-list grey lighten-4>
         <v-layout row wrap :style="displayGrid">
-          <v-flex v-for="i in 6" :key="`2${i}`">
-            <v-card class="blog-card">
+          <v-flex v-for="i in 2" :key="`6${i}`">
+            <v-card class="blog-card mx-2 my-2">
               <v-img
                 class="post-image"
                 src="https://source.unsplash.com/DnWYw0zLJBg"
                 width="100%"
                 height="100%"
-              ></v-img>
+              >
+                <v-layout align-center justify-center row fill-height>
+                  <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                  ></v-progress-circular>
+                </v-layout>
+              </v-img>
+
               <v-card-actions class="white justify-center">
-                <div class="article-details">
+                <div xs6 class="article-details">
                   <h4 class="post-category">Title</h4>
-                  <h3 class="post-title grey--text text--darken-1">
-                    There will be title of the file
-                  </h3>
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on }">
+                      <h3
+                        class=" truncate post-title grey--text text--darken-1 justify-center"
+                        v-on="on"
+                      >
+                        This text has a tooltip are the file
+                      </h3>
+                    </template>
+                    <span>There will be a little pf pf pf pf pf pf pf</span>
+                  </v-tooltip>
                   <v-flex shrink class="text-center">
                     <span class="mx-2"><b>14.4 kB</b></span>
                     <v-btn icon>
@@ -73,141 +89,26 @@ export default {
               </v-card-actions>
             </v-card>
           </v-flex>
-
           <v-flex>
-            <v-card xs12 sm12 md12 class="blog-card">
+            <v-card class="blog-card mx-2 my-2">
               <v-img
                 class="post-image"
                 src="https://source.unsplash.com/DnWYw0zLJBg"
                 width="100%"
                 height="100%"
-              ></v-img>
-              <v-card-actions class="white justify-center">
+              >
+              </v-img>
+              <v-card-actions class="white justify-center pixel">
                 <span class="my-5"
                   >Drop files, <a href="#"><b>Browse</b></a> or import</span
                 >
               </v-card-actions>
             </v-card>
           </v-flex>
-          <!--                  These path is  for xs size       class="hidden-sm-and-up" -->
-          <!--          <v-flex>-->
-          <!--            <v-card xs12 sm12 md12 max-width="344" class="mx-auto">-->
-          <!--              <v-layout pt-4 pl-4>-->
-          <!--                <v-flex shrink>-->
-          <!--                  <v-img-->
-          <!--                    height="100"-->
-          <!--                    width="100"-->
-          <!--                    src="https://cdn.vuetifyjs.com/images/cards/store.jpg"-->
-          <!--                  ></v-img>-->
-          <!--                </v-flex>-->
-          <!--                <v-flex>-->
-          <!--                  <v-container>-->
-          <!--                    <v-textarea-->
-          <!--                      rows="2"-->
-          <!--                      readonly-->
-          <!--                      value="This is title title title title tit"-->
-          <!--                      label="Title"-->
-          <!--                    ></v-textarea>-->
-          <!--                  </v-container>-->
-          <!--                </v-flex>-->
-          <!--              </v-layout>-->
-          <!--              <v-layout row>-->
-          <!--                <span class="ml-4 mt-5"><b>14.4 kB</b></span>-->
-          <!--                <v-flex class="rightAlign">-->
-          <!--                  <v-btn icon>-->
-          <!--                    <v-icon>cloud_upload</v-icon>-->
-          <!--                  </v-btn>-->
-          <!--                </v-flex>-->
-          <!--                <v-flex class="rightAlign">-->
-          <!--                  <v-btn icon>-->
-          <!--                    <v-icon>delete</v-icon>-->
-          <!--                  </v-btn>-->
-          <!--                </v-flex>-->
-          <!--              </v-layout>-->
-          <!--            </v-card>-->
-          <!--          </v-flex>-->
-
-          <!--          <v-flex class="">-->
-          <!--            <v-card xs12 sm12 md12 max-width="344" class="mx-auto">-->
-          <!--              <v-layout pt-4 pl-4>-->
-          <!--                <v-flex shrink>-->
-          <!--                  <v-img-->
-          <!--                    height="100"-->
-          <!--                    width="100"-->
-          <!--                    src="https://cdn.vuetifyjs.com/images/cards/store.jpg"-->
-          <!--                  ></v-img>-->
-          <!--                </v-flex>-->
-          <!--                <v-flex>-->
-          <!--                  <v-container>-->
-          <!--                    <v-card-actions class="white justify-center">-->
-          <!--                      <span class="my-5"-->
-          <!--                        >Drop files, <a href="#"><b>Browse</b></a> or import-->
-          <!--                        ..</span-->
-          <!--                      >-->
-          <!--                    </v-card-actions>-->
-          <!--                  </v-container>-->
-          <!--                </v-flex>-->
-          <!--              </v-layout>-->
-          <!--            </v-card>-->
-          <!--          </v-flex>-->
         </v-layout>
       </v-container>
 
-      <!--      <v-layout row wrap class="align-start my-4">-->
-      <!--        <div id="card" v-for="i in 2" :key="`6${i}`">-->
-      <!--          <v-flex xs12 sm12 md12>-->
-      <!--            <a class="card-link" href="#">-->
-      <!--              <div class="blog-card">-->
-      <!--                <v-img-->
-      <!--                  class="post-image"-->
-      <!--                  src="https://source.unsplash.com/DnWYw0zLJBg"-->
-      <!--                  width="100%"-->
-      <!--                  height="100%"-->
-      <!--                ></v-img>-->
-      <!--                <div class="article-details">-->
-      <!--                  <h4 class="post-category">Title</h4>-->
-      <!--                  <h3 class="post-title grey&#45;&#45;text text&#45;&#45;darken-1">-->
-      <!--                    There will be title of the file-->
-      <!--                  </h3>-->
-      <!--                  <v-flex shrink class="text-center">-->
-      <!--                    <span class="mx-2"><b>14.4 kB</b></span>-->
-      <!--                    <v-btn icon>-->
-      <!--                      <v-icon large class="upload">cloud_upload</v-icon>-->
-      <!--                    </v-btn>-->
-      <!--                    <v-btn icon>-->
-      <!--                      <v-icon large>delete</v-icon>-->
-      <!--                    </v-btn>-->
-      <!--                  </v-flex>-->
-      <!--                </div>-->
-      <!--              </div>-->
-      <!--            </a>-->
-      <!--          </v-flex>-->
-      <!--        </div>-->
-      <!--        <div id="lastcard">-->
-      <!--          <div class="mx-4 my-4">-->
-      <!--            <a class="card-link" href="#">-->
-      <!--              <div class="blog-card">-->
-      <!--                <v-img-->
-      <!--                  class="post-image"-->
-      <!--                  src="https://source.unsplash.com/DnWYw0zLJBg"-->
-      <!--                  width="100%"-->
-      <!--                  height="100%"-->
-      <!--                  alt=".."-->
-      <!--                ></v-img>-->
-      <!--                <div class="article-details fulljustify my-3">-->
-      <!--                  <h3-->
-      <!--                    class="post-title grey&#45;&#45;text text&#45;&#45;darken-1 text-center my-3 py-3"-->
-      <!--                  >-->
-      <!--                    Drop files <a href="#">Browse</a> or import-->
-      <!--                  </h3>-->
-      <!--                </div>-->
-      <!--              </div>-->
-      <!--            </a>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </v-layout>-->
-
-      <div class="mx-4 my-4">
+      <div class="mx-4 my-4 text-center">
         <v-btn color="blue">
           Upload
           <v-icon right>cloud_upload</v-icon>
@@ -219,26 +120,15 @@ export default {
 </template>
 
 <style scoped>
-/*.rightAlign {*/
-/*  text-align: right;*/
-/*}*/
-
-body {
-  display: flex;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: #777;
-  background: #eedfcc;
-  font-size: 0.9375rem;
-  min-height: 100vh;
-  margin: 0;
-  line-height: 1.6;
+.truncate {
+  width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-#card,
-#lastcard {
-  width: 460px;
-  height: 13.625rem;
+.pixel {
+  height: 158px !important;
 }
 
 .blog-card {
@@ -250,12 +140,6 @@ body {
   overflow: hidden;
 }
 
-.card-link {
-  position: relative;
-  display: inline;
-  color: inherit;
-  text-decoration: none;
-}
 .post-image {
   display: block;
   width: 100%;
@@ -284,18 +168,6 @@ body {
   border-bottom: 0.125rem solid #ebebeb;
 }
 
-@media (max-width: 40rem) {
-  #card,
-  #lastcard {
-    width: 460px;
-    height: 27.25rem;
-  }
-
-  .blog-card {
-    flex-wrap: wrap;
-  }
-}
-
 @supports (display: grid) {
   body {
     display: grid;
@@ -303,32 +175,17 @@ body {
     grid-gap: 0.625rem;
     grid-template-areas: ". main main ." ". main main .";
   }
-
-  #card,
-  #lastcard {
-    grid-area: main;
-    align-self: center;
-    justify-self: center;
-  }
   .blog-card {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
   }
 
-  @media (max-width: 40rem) {
+  @media (max-width: 49rem) {
     .blog-card {
       grid-template-columns: auto;
       grid-template-rows: 12rem 1fr;
     }
   }
-}
-.fulljustify {
-  text-align: justify;
-}
-.fulljustify:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
 }
 </style>
