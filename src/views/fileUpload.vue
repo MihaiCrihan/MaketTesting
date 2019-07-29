@@ -36,17 +36,17 @@ export default {
         <v-spacer></v-spacer>
 
         <div class="mx-1">
-          <span>
-            Total file size: <b>28.54 kB</b> of max <b>5.12 MB </b>Total files:
-            <b>4</b> of max <b>10</b>
+          <span class="text-center">
+            Total file size: <b>28.54 kB</b> of max <b>5.12 MB </b> <br />
+            Total files:<b>4</b> of max <b>10</b>
           </span>
         </div>
       </v-toolbar>
 
       <!--                Next path is card for > xs-->
-      <v-container fluid grid-list grey lighten-4>
+      <v-container fluid grid-list>
         <v-layout row wrap :style="displayGrid">
-          <v-flex v-for="i in 2" :key="`6${i}`">
+          <v-flex v-for="i in 1" :key="`12${i}`">
             <v-card class="blog-card mx-2 my-2">
               <v-img
                 class="post-image"
@@ -54,12 +54,14 @@ export default {
                 width="100%"
                 height="100%"
               >
-                <v-layout align-center justify-center row fill-height>
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5"
-                  ></v-progress-circular>
-                </v-layout>
+                <!--                <v-layout align-center justify-center row fill-height>-->
+                <!--                  <v-progress-circular-->
+                <!--                    indeterminate-->
+                <!--                    size="100"-->
+                <!--                    width="6"-->
+                <!--                    color="grey lighten-5"-->
+                <!--                  ></v-progress-circular>-->
+                <!--                </v-layout>-->
               </v-img>
 
               <v-card-actions class="white justify-center">
@@ -74,7 +76,9 @@ export default {
                         This text has a tooltip are the file
                       </h3>
                     </template>
-                    <span>There will be a little pf pf pf pf pf pf pf</span>
+                    <span
+                      >There will be a little pf pf pf pf pf pf pf little little
+                    </span>
                   </v-tooltip>
                   <v-flex shrink class="text-center">
                     <span class="mx-2"><b>14.4 kB</b></span>
@@ -98,7 +102,7 @@ export default {
                 height="100%"
               >
               </v-img>
-              <v-card-actions class="white justify-center pixel">
+              <v-card-actions class="white justify-center lastCardSize">
                 <span class="my-5"
                   >Drop files, <a href="#"><b>Browse</b></a> or import</span
                 >
@@ -126,8 +130,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.pixel {
+.lastCardSize {
   height: 158px !important;
 }
 
@@ -170,10 +173,10 @@ export default {
 
 @supports (display: grid) {
   body {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0.625rem;
-    grid-template-areas: ". main main ." ". main main .";
+    /*display: grid;*/
+    /*grid-template-columns: repeat(4, 1fr);*/
+    /*grid-gap: 0.625rem;*/
+    /*grid-template-areas: ". main main ." ". main main .";*/
   }
   .blog-card {
     display: grid;
